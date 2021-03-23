@@ -96,7 +96,11 @@ class ClusterManager<T> {
     final LatLngBounds inflatedBounds = _inflateBounds(mapBounds);
 
     List<ClusterItem<T>> visibleItems = items.where((i) {
-      return inflatedBounds.contains(i.location);
+      if (_currentZoom < 8) {
+        return mapBounds.contains(i.location);
+      } else {
+        return inflatedBounds.contains(i.location);
+      }
     }).toList();
 
     if (stopClusteringZoom != null && _currentZoom >= stopClusteringZoom)

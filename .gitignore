@@ -17,3 +17,5 @@ doc/api/
 
 # Visual Studio Code related
 .vscode/
+
+.idea
